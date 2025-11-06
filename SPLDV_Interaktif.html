@@ -1,0 +1,3060 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPLDV Interaktif</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .menu-container {
+            text-align: center;
+            padding: 50px;
+        }
+        .menu-container h1 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        .menu-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+        .menu-buttons button {
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 10px;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        .menu-buttons button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #667eea;
+            color: white;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: none;
+        }
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+        }
+        .back-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container" id="mainMenu">
+        <h1>📚 Media Pembelajaran Interaktif SPLDV</h1>
+        <div class="menu-buttons">
+            <button onclick="openPage('materi')">Materi SPLDV</button>
+            <button onclick="openPage('substitusi')">Metode Substitusi</button>
+            <button onclick="openPage('eliminasi')">Metode Eliminasi</button>
+            <button onclick="openPage('gabungan')">Metode Gabungan</button>
+        </div>
+    </div>
+
+    <button class="back-btn" id="backButton" onclick="goBack()">⬅️ Kembali ke Menu Utama</button>
+
+    <iframe id="materi" srcdoc="<!DOCTYPE html>
+<html lang=&quot;id&quot;>
+<head>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    <title>Media Pembelajaran SPLDV Interaktif</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0;
+            background: #f8f9fa;
+            padding: 0;
+            border-bottom: 2px solid #e9ecef;
+            flex-wrap: wrap;
+        }
+
+        .nav-tabs button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .nav-tabs button:hover {
+            background: #e9ecef;
+            color: #667eea;
+        }
+
+        .nav-tabs button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
+        }
+
+        .content {
+            padding: 40px;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .definition-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .definition-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .formula-box {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ffc107;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            overflow-x: auto;
+        }
+
+        .example-section {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #2196F3;
+        }
+
+        .example-section h4 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .example-section p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .method-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .method-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .method-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .method-card .btn-learn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .method-card .btn-learn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+        }
+
+        .interactive-tool {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 2px dashed #667eea;
+        }
+
+        .interactive-tool h4 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 10px;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .result-display {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #27ae60;
+            display: none;
+        }
+
+        .result-display.show {
+            display: block;
+        }
+
+        .step-box {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-box strong {
+            color: #667eea;
+        }
+
+        .tip-box {
+            background: #c8e6c9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .tip-box p {
+            color: #1b5e20;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .canvas-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        canvas {
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-tabs button {
+                min-width: 100px;
+                padding: 12px 10px;
+                font-size: 0.9em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class=&quot;container&quot;>
+        <div class=&quot;header&quot;>
+            <h1>📚 Sistem Persamaan Linear Dua Variabel (SPLDV)</h1>
+            <p>Media Pembelajaran Interaktif untuk Siswa</p>
+        </div>
+
+        <div class=&quot;nav-tabs&quot;>
+            <button class=&quot;tab-btn active&quot; onclick=&quot;switchTab('pengenalan', event)&quot;>Pengenalan</button>
+            <button class=&quot;tab-btn&quot; onclick=&quot;switchTab('definisi', event)&quot;>Definisi & Bentuk</button>
+            <button class=&quot;tab-btn&quot; onclick=&quot;switchTab('metode', event)&quot;>Metode Penyelesaian</button>
+            <button class=&quot;tab-btn&quot; onclick=&quot;switchTab('contoh', event)&quot;>Contoh Soal</button>
+            <button class=&quot;tab-btn&quot; onclick=&quot;switchTab('latihan', event)&quot;>Latihan</button>
+        </div>
+
+        <!-- TAB 1: PENGENALAN -->
+        <div id=&quot;pengenalan&quot; class=&quot;content active&quot;>
+            <h2 class=&quot;section-title&quot;>🎯 Apa itu SPLDV?</h2>
+            
+            <div class=&quot;definition-box&quot;>
+                <h3>Pengertian Dasar</h3>
+                <p>Sistem Persamaan Linear Dua Variabel (SPLDV) adalah himpunan beberapa persamaan linear yang memiliki dua variabel dan berdiri bersama-sama. Setiap persamaan dalam SPLDV memiliki pangkat tertinggi 1.</p>
+            </div>
+
+            <div class=&quot;example-section&quot;>
+                <h4>💡 Contoh SPLDV:</h4>
+                <div class=&quot;formula-box&quot;>
+                    x + y = 5<br>
+                    2x - y = 1
+                </div>
+                <p>Kedua persamaan di atas membentuk SPLDV karena memiliki dua variabel (x dan y) dan berdiri bersama-sama untuk mencari satu solusi.</p>
+            </div>
+
+            <div class=&quot;tip-box&quot;>
+                <p><strong>💡 Tips:</strong> SPLDV selalu memiliki satu solusi, tidak ada solusi, atau banyak solusi tergantung hubungan kedua persamaannya.</p>
+            </div>
+
+            <div class=&quot;definition-box&quot;>
+                <h3>Ciri-Ciri SPLDV:</h3>
+                <p>
+                    ✓ Memiliki dua persamaan linear<br>
+                    ✓ Memiliki dua variabel (biasanya x dan y)<br>
+                    ✓ Pangkat tertinggi semua variabel adalah 1<br>
+                    ✓ Ketiga persamaan saling berhubungan
+                </p>
+            </div>
+        </div>
+
+        <!-- TAB 2: DEFINISI & BENTUK -->
+        <div id=&quot;definisi&quot; class=&quot;content&quot;>
+            <h2 class=&quot;section-title&quot;>📐 Bentuk Umum SPLDV</h2>
+            
+            <div class=&quot;formula-box&quot; style=&quot;font-size: 1.15em; text-align: center;&quot;>
+                a₁x + b₁y = c₁<br>
+                a₂x + b₂y = c₂
+            </div>
+
+            <p style=&quot;margin-bottom: 20px; color: #333; line-height: 1.8;&quot;>
+                <strong>Keterangan:</strong><br>
+                • x, y = variabel<br>
+                • a₁, a₂ = koefisien x<br>
+                • b₁, b₂ = koefisien y<br>
+                • c₁, c₂ = konstanta<br>
+                • a₁, a₂, b₁, b₂ ≠ 0
+            </p>
+
+            <div class=&quot;example-section&quot;>
+                <h4>🔍 Mengidentifikasi Komponen SPLDV:</h4>
+                <div class=&quot;step-box&quot;>
+                    <strong>Persamaan:</strong> 3x + 2y = 12<br><br>
+                    <strong>Variabel:</strong> x dan y<br>
+                    <strong>Koefisien x:</strong> 3<br>
+                    <strong>Koefisien y:</strong> 2<br>
+                    <strong>Konstanta:</strong> 12
+                </div>
+            </div>
+
+            <div class=&quot;definition-box&quot;>
+                <h3>Perbedaan PLDV dan SPLDV:</h3>
+                <p>
+                    <strong>PLDV (Persamaan Linear Dua Variabel):</strong> Satu persamaan dengan dua variabel<br>
+                    Contoh: 2x + 3y = 10<br><br>
+                    <strong>SPLDV (Sistem Persamaan Linear Dua Variabel):</strong> Dua atau lebih persamaan linear dengan dua variabel<br>
+                    Contoh: 2x + 3y = 10<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x - y = 2
+                </p>
+            </div>
+        </div>
+
+        <!-- TAB 3: METODE PENYELESAIAN -->
+        <div id=&quot;metode&quot; class=&quot;content&quot;>
+            <h2 class=&quot;section-title&quot;>🔧 Metode Penyelesaian SPLDV</h2>
+            
+            <div class=&quot;method-grid&quot;>
+                <div class=&quot;method-card&quot;>
+                    <h3>🟣 Metode Substitusi</h3>
+                    <p>Mengganti salah satu variabel dengan persamaan lain untuk menemukan solusi.</p>
+                    <div class=&quot;formula-box&quot; style=&quot;background: #f3e5f5; border-left-color: #9c27b0; margin-bottom: 15px;&quot;>
+                        Langkah:<br>
+                        1. Ubah salah satu persamaan<br>
+                        2. Substitusi ke persamaan lain<br>
+                        3. Selesaikan satu variabel<br>
+                        4. Cari variabel lainnya
+                    </div>
+                    <button class=&quot;btn-learn&quot; onclick=&quot;alert('Pelajari detail Metode Substitusi di tab Contoh Soal')&quot;>Pelajari Detail</button>
+                </div>
+
+                <div class=&quot;method-card&quot;>
+                    <h3>🔴 Metode Eliminasi</h3>
+                    <p>Menghilangkan salah satu variabel dengan menyamakan koefisien dan mengurangkan persamaan.</p>
+                    <div class=&quot;formula-box&quot; style=&quot;background: #ffebee; border-left-color: #f44336; margin-bottom: 15px;&quot;>
+                        Langkah:<br>
+                        1. Samakan koefisien<br>
+                        2. Kurangkan persamaan<br>
+                        3. Selesaikan variabel<br>
+                        4. Cari variabel lainnya
+                    </div>
+                    <button class=&quot;btn-learn&quot; onclick=&quot;alert('Pelajari detail Metode Eliminasi di tab Contoh Soal')&quot;>Pelajari Detail</button>
+                </div>
+
+                <div class=&quot;method-card&quot;>
+                    <h3>🟠 Metode Gabungan</h3>
+                    <p>Menggabungkan metode eliminasi dan substitusi untuk solusi yang efisien.</p>
+                    <div class=&quot;formula-box&quot; style=&quot;background: #fff3e0; border-left-color: #ff9800; margin-bottom: 15px;&quot;>
+                        Langkah:<br>
+                        1. Eliminasi satu variabel<br>
+                        2. Dapatkan nilai satu variabel<br>
+                        3. Substitusi nilai tersebut<br>
+                        4. Cari variabel lainnya
+                    </div>
+                    <button class=&quot;btn-learn&quot; onclick=&quot;alert('Pelajari detail Metode Gabungan di tab Contoh Soal')&quot;>Pelajari Detail</button>
+                </div>
+
+                <div class=&quot;method-card&quot;>
+                    <h3>📊 Metode Grafik</h3>
+                    <p>Menentukan solusi dengan membuat grafik kedua persamaan dan mencari titik potongnya.</p>
+                    <div class=&quot;formula-box&quot; style=&quot;background: #f1f8e9; border-left-color: #4caf50; margin-bottom: 15px;&quot;>
+                        Langkah:<br>
+                        1. Buat tabel nilai x dan y<br>
+                        2. Gambar grafik persamaan 1<br>
+                        3. Gambar grafik persamaan 2<br>
+                        4. Cari titik potong kedua garis
+                    </div>
+                    <button class=&quot;btn-learn&quot; onclick=&quot;alert('Lihat Contoh Soal untuk melihat grafik interaktif')&quot;>Pelajari Detail</button>
+                </div>
+            </div>
+
+            <div class=&quot;tip-box&quot;>
+                <p><strong>💡 Tips Memilih Metode:</strong></p>
+                <p>• <strong>Substitusi:</strong> Cocok jika koefisien sudah 1<br>
+                   • <strong>Eliminasi:</strong> Cocok jika koefisien mudah disamakan<br>
+                   • <strong>Gabungan:</strong> Paling fleksibel, cocok untuk semua kasus<br>
+                   • <strong>Grafik:</strong> Cocok untuk visualisasi, memahami konsep geometri</p>
+            </div>
+        </div>
+
+        <!-- TAB 4: CONTOH SOAL -->
+        <div id=&quot;contoh&quot; class=&quot;content&quot;>
+            <h2 class=&quot;section-title&quot;>📖 Contoh Soal Lengkap</h2>
+            
+            <div class=&quot;example-section&quot;>
+                <h4>Soal 1: Metode Substitusi</h4>
+                <p><strong>Tentukan penyelesaian dari:</strong><br>
+                   x + y = 5<br>
+                   2x - y = 1
+                </p>
+                <div class=&quot;step-box&quot;>
+                    <strong>Penyelesaian:</strong><br><br>
+                    <strong>Langkah 1:</strong> Dari persamaan pertama<br>
+                    x + y = 5 → y = 5 - x<br><br>
+                    <strong>Langkah 2:</strong> Substitusi ke persamaan kedua<br>
+                    2x - (5 - x) = 1<br>
+                    2x - 5 + x = 1<br>
+                    3x = 6<br>
+                    x = 2<br><br>
+                    <strong>Langkah 3:</strong> Cari nilai y<br>
+                    y = 5 - 2 = 3<br><br>
+                    <strong>Jadi, solusinya adalah x = 2 dan y = 3</strong>
+                </div>
+            </div>
+
+            <div class=&quot;example-section&quot;>
+                <h4>Soal 2: Metode Eliminasi</h4>
+                <p><strong>Tentukan penyelesaian dari:</strong><br>
+                   2x + y = 7<br>
+                   x - y = 2
+                </p>
+                <div class=&quot;step-box&quot;>
+                    <strong>Penyelesaian:</strong><br><br>
+                    <strong>Langkah 1:</strong> Tambahkan kedua persamaan<br>
+                    2x + y = 7<br>
+                    x - y = 2<br>
+                    ────────────<br>
+                    3x = 9<br>
+                    x = 3<br><br>
+                    <strong>Langkah 2:</strong> Substitusi x = 3 ke persamaan pertama<br>
+                    2(3) + y = 7<br>
+                    6 + y = 7<br>
+                    y = 1<br><br>
+                    <strong>Jadi, solusinya adalah x = 3 dan y = 1</strong>
+                </div>
+            </div>
+
+            <div class=&quot;example-section&quot;>
+                <h4>Soal 3: Metode Gabungan</h4>
+                <p><strong>Tentukan penyelesaian dari:</strong><br>
+                   2x + 3y = 12<br>
+                   x - y = 1
+                </p>
+                <div class=&quot;step-box&quot;>
+                    <strong>Penyelesaian:</strong><br><br>
+                    <strong>Langkah 1 (ELIMINASI):</strong> Kalikan persamaan kedua dengan 2<br>
+                    Persamaan 1: 2x + 3y = 12<br>
+                    Persamaan 2 × 2: 2x - 2y = 2<br><br>
+                    <strong>Langkah 2 (ELIMINASI):</strong> Kurangkan persamaan 1 dengan 2<br>
+                    (2x + 3y) - (2x - 2y) = 12 - 2<br>
+                    5y = 10<br>
+                    y = 2<br><br>
+                    <strong>Langkah 3 (SUBSTITUSI):</strong> Substitusi y = 2 ke persamaan kedua<br>
+                    x - 2 = 1<br>
+                    x = 3<br><br>
+                    <strong>Jadi, solusinya adalah x = 3 dan y = 2</strong>
+                </div>
+            </div>
+
+            <div class=&quot;example-section&quot;>
+                <h4>Soal 4: Metode Grafik</h4>
+                <p><strong>Tentukan penyelesaian dari dengan metode grafik:</strong><br>
+                   x + y = 5<br>
+                   2x - y = 1
+                </p>
+                <div class=&quot;step-box&quot;>
+                    <strong>Penyelesaian:</strong><br><br>
+                    <strong>Langkah 1:</strong> Buat tabel nilai untuk persamaan 1 (x + y = 5)<br>
+                    x = 0, maka y = 5 → (0, 5)<br>
+                    x = 5, maka y = 0 → (5, 0)<br><br>
+                    <strong>Langkah 2:</strong> Buat tabel nilai untuk persamaan 2 (2x - y = 1)<br>
+                    x = 0, maka y = -1 → (0, -1)<br>
+                    x = 2, maka y = 3 → (2, 3)<br><br>
+                    <strong>Langkah 3:</strong> Gambar kedua garis pada bidang koordinat<br><br>
+                    <strong>Langkah 4:</strong> Cari titik potong kedua garis<br>
+                    Dari grafik: titik potong di (2, 3)<br><br>
+                    <strong>Jadi, solusinya adalah x = 2 dan y = 3</strong>
+                </div>
+                <div class=&quot;canvas-container&quot;>
+                    <canvas id=&quot;grafikContoh&quot; width=&quot;400&quot; height=&quot;400&quot;></canvas>
+                </div>
+            </div>
+
+            <div class=&quot;example-section&quot;>
+                <h4>Soal 5: Metode Grafik - Contoh 2</h4>
+                <p><strong>Tentukan penyelesaian dari dengan metode grafik:</strong><br>
+                   2x + y = 7<br>
+                   x - y = 2
+                </p>
+                <div class=&quot;step-box&quot;>
+                    <strong>Penyelesaian:</strong><br><br>
+                    <strong>Langkah 1:</strong> Buat tabel nilai untuk persamaan 1 (2x + y = 7)<br>
+                    x = 0, maka y = 7 → (0, 7)<br>
+                    x = 3, maka y = 1 → (3, 1)<br><br>
+                    <strong>Langkah 2:</strong> Buat tabel nilai untuk persamaan 2 (x - y = 2)<br>
+                    x = 0, maka y = -2 → (0, -2)<br>
+                    x = 4, maka y = 2 → (4, 2)<br><br>
+                    <strong>Langkah 3:</strong> Gambar kedua garis pada bidang koordinat<br><br>
+                    <strong>Langkah 4:</strong> Cari titik potong kedua garis<br>
+                    Dari grafik: titik potong di (3, 1)<br><br>
+                    <strong>Jadi, solusinya adalah x = 3 dan y = 1</strong>
+                </div>
+                <div class=&quot;canvas-container&quot;>
+                    <canvas id=&quot;grafikContoh2&quot; width=&quot;400&quot; height=&quot;400&quot;></canvas>
+                </div>
+            </div>
+
+            <div class=&quot;example-section&quot;>
+                <h4>Soal 6: Metode Grafik - Contoh 3</h4>
+                <p><strong>Tentukan penyelesaian dari dengan metode grafik:</strong><br>
+                   x + 2y = 8<br>
+                   2x - y = 1
+                </p>
+                <div class=&quot;step-box&quot;>
+                    <strong>Penyelesaian:</strong><br><br>
+                    <strong>Langkah 1:</strong> Buat tabel nilai untuk persamaan 1 (x + 2y = 8)<br>
+                    x = 0, maka y = 4 → (0, 4)<br>
+                    x = 4, maka y = 2 → (4, 2)<br><br>
+                    <strong>Langkah 2:</strong> Buat tabel nilai untuk persamaan 2 (2x - y = 1)<br>
+                    x = 0, maka y = -1 → (0, -1)<br>
+                    x = 2, maka y = 3 → (2, 3)<br><br>
+                    <strong>Langkah 3:</strong> Gambar kedua garis pada bidang koordinat<br><br>
+                    <strong>Langkah 4:</strong> Cari titik potong kedua garis<br>
+                    Dari grafik: titik potong di (2, 3)<br><br>
+                    <strong>Jadi, solusinya adalah x = 2 dan y = 3</strong>
+                </div>
+                <div class=&quot;canvas-container&quot;>
+                    <canvas id=&quot;grafikContoh3&quot; width=&quot;400&quot; height=&quot;400&quot;></canvas>
+                </div>
+            </div>
+
+            <div class=&quot;tip-box&quot; style=&quot;margin-top: 30px;&quot;>
+                <p><strong>📌 Panduan Belajar:</strong></p>
+                <p>1. Pelajari semua materi di tab sebelumnya<br>
+                   2. Coba selesaikan soal secara mandiri<br>
+                   3. Gunakan kalkulator interaktif untuk memverifikasi<br>
+                   4. Ulangi hingga Anda memahami setiap langkah</p>
+            </div>
+        </div>
+
+        <!-- TAB 5: LATIHAN -->
+        <div id=&quot;latihan&quot; class=&quot;content&quot;>
+            <h2 class=&quot;section-title&quot;>✏️ 50 Soal Latihan Lengkap</h2>
+            
+            <div style=&quot;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 10px; margin-bottom: 25px; color: white;&quot;>
+                <h3 style=&quot;margin-bottom: 20px;&quot;>📊 Fitur Latihan Interaktif</h3>
+                <div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;&quot;>
+                    <div style=&quot;background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;&quot;>
+                        <strong>✅ 50 Soal Interaktif</strong><br>
+                        Dari Soal 1-50 dengan variasi
+                    </div>
+                    <div style=&quot;background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;&quot;>
+                        <strong>📈 Progress Tracking</strong><br>
+                        Real-time progress bar
+                    </div>
+                    <div style=&quot;background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;&quot;>
+                        <strong>⚡ Feedback Real-Time</strong><br>
+                        Untuk setiap jawaban soal
+                    </div>
+                    <div style=&quot;background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;&quot;>
+                        <strong>🎯 Penilaian Otomatis</strong><br>
+                        Sistem scoring akurat
+                    </div>
+                </div>
+            </div>
+
+            <div style=&quot;background: #e8f4f8; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #2196F3;&quot;>
+                <p style=&quot;margin: 0; color: #333;&quot;><strong>📊 Progress Anda:</strong> <span id=&quot;progressText&quot; style=&quot;color: #667eea; font-weight: bold;&quot;>0/50 Soal Dijawab</span></p>
+                <div style=&quot;background: white; height: 25px; border-radius: 10px; overflow: hidden; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);&quot;>
+                    <div id=&quot;progressBar&quot; style=&quot;background: linear-gradient(90deg, #667eea, #764ba2); width: 0%; height: 100%; transition: width 0.3s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;&quot;>
+                        0%
+                    </div>
+                </div>
+            </div>
+
+            <div id=&quot;soalContainer&quot;></div>
+
+            <button class=&quot;btn-action&quot; style=&quot;width: 100%; margin-top: 30px; padding: 15px; font-size: 1.1em;&quot; onclick=&quot;submitAllAnswers()&quot;>Lihat Hasil Akhir</button>
+            
+            <div id=&quot;hasilAkhir&quot; class=&quot;result-display&quot; style=&quot;margin-top: 20px; text-align: center; display: none; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border: none;&quot;>
+                <div id=&quot;pesanAkhir&quot;></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        'use strict';
+
+        const daftarSoal = [
+            {pers1: &quot;x + y = 5&quot;, pers2: &quot;2x - y = 1&quot;, jawabX: 2, jawabY: 3},
+            {pers1: &quot;x + 2y = 7&quot;, pers2: &quot;2x - y = 4&quot;, jawabX: 3, jawabY: 2},
+            {pers1: &quot;3x + y = 11&quot;, pers2: &quot;x + 2y = 7&quot;, jawabX: 3, jawabY: 2},
+            {pers1: &quot;2x + y = 7&quot;, pers2: &quot;x - y = 2&quot;, jawabX: 3, jawabY: 1},
+            {pers1: &quot;x + y = 6&quot;, pers2: &quot;x - y = 2&quot;, jawabX: 4, jawabY: 2},
+            {pers1: &quot;2x + 3y = 12&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 3, jawabY: 2},
+            {pers1: &quot;3x + 2y = 13&quot;, pers2: &quot;x + y = 5&quot;, jawabX: 3, jawabY: 2},
+            {pers1: &quot;x + 3y = 10&quot;, pers2: &quot;2x - y = 5&quot;, jawabX: 5, jawabY: 1.67},
+            {pers1: &quot;2x - y = 3&quot;, pers2: &quot;x + y = 6&quot;, jawabX: 3, jawabY: 3},
+            {pers1: &quot;x + 2y = 8&quot;, pers2: &quot;2x - y = 1&quot;, jawabX: 2, jawabY: 3},
+            {pers1: &quot;3x + y = 7&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 2, jawabY: 1},
+            {pers1: &quot;2x + 2y = 10&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 3, jawabY: 2},
+            {pers1: &quot;x + y = 9&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 5, jawabY: 4},
+            {pers1: &quot;3x - y = 5&quot;, pers2: &quot;x + y = 3&quot;, jawabX: 2, jawabY: 1},
+            {pers1: &quot;2x + 3y = 11&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 2, jawabY: 2.33},
+            {pers1: &quot;x + 2y = 5&quot;, pers2: &quot;2x - y = 5&quot;, jawabX: 3, jawabY: 1},
+            {pers1: &quot;2x - 3y = 1&quot;, pers2: &quot;x + y = 4&quot;, jawabX: 2.6, jawabY: 1.4},
+            {pers1: &quot;3x + 2y = 10&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;x + y = 7&quot;, pers2: &quot;2x - y = 2&quot;, jawabX: 3, jawabY: 4},
+            {pers1: &quot;2x + y = 9&quot;, pers2: &quot;x - y = 0&quot;, jawabX: 3, jawabY: 3},
+            {pers1: &quot;x - 2y = 0&quot;, pers2: &quot;x + y = 6&quot;, jawabX: 4, jawabY: 2},
+            {pers1: &quot;3x - 2y = 7&quot;, pers2: &quot;x + y = 5&quot;, jawabX: 2.4, jawabY: 2.6},
+            {pers1: &quot;2x + y = 8&quot;, pers2: &quot;x + 2y = 7&quot;, jawabX: 3, jawabY: 2},
+            {pers1: &quot;x + 3y = 11&quot;, pers2: &quot;2x - y = 0&quot;, jawabX: 1, jawabY: 3.33},
+            {pers1: &quot;3x + y = 10&quot;, pers2: &quot;x + 3y = 10&quot;, jawabX: 2.5, jawabY: 2.5},
+            {pers1: &quot;2x - y = 4&quot;, pers2: &quot;x + 2y = 5&quot;, jawabX: 2.6, jawabY: 1.2},
+            {pers1: &quot;x + y = 8&quot;, pers2: &quot;3x - y = 4&quot;, jawabX: 3, jawabY: 5},
+            {pers1: &quot;2x + 3y = 8&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 2, jawabY: 1.33},
+            {pers1: &quot;3x + 2y = 12&quot;, pers2: &quot;x + 2y = 8&quot;, jawabX: 2, jawabY: 3},
+            {pers1: &quot;x - y = 2&quot;, pers2: &quot;2x + y = 10&quot;, jawabX: 4, jawabY: 2},
+            {pers1: &quot;2x + 2y = 6&quot;, pers2: &quot;x - y = 2&quot;, jawabX: 2.67, jawabY: 0.67},
+            {pers1: &quot;x + y = 4&quot;, pers2: &quot;3x - y = 4&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;2x - y = 5&quot;, pers2: &quot;x + y = 4&quot;, jawabX: 3, jawabY: 1},
+            {pers1: &quot;3x - 2y = 2&quot;, pers2: &quot;x + y = 4&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;x + 2y = 6&quot;, pers2: &quot;2x - 2y = 0&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;2x + 3y = 7&quot;, pers2: &quot;x - y = 0&quot;, jawabX: 1.4, jawabY: 1.4},
+            {pers1: &quot;3x + y = 8&quot;, pers2: &quot;x - y = 0&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;x + 3y = 7&quot;, pers2: &quot;2x - y = 4&quot;, jawabX: 2.2, jawabY: 1.6},
+            {pers1: &quot;2x - 3y = 1&quot;, pers2: &quot;x + 2y = 7&quot;, jawabX: 3, jawabY: 1.67},
+            {pers1: &quot;x + y = 10&quot;, pers2: &quot;2x - y = 5&quot;, jawabX: 5, jawabY: 5},
+            {pers1: &quot;3x + 2y = 11&quot;, pers2: &quot;x - y = 0&quot;, jawabX: 2.2, jawabY: 2.2},
+            {pers1: &quot;2x + y = 6&quot;, pers2: &quot;x - 2y = 0&quot;, jawabX: 1.2, jawabY: 3.6},
+            {pers1: &quot;x + y = 7&quot;, pers2: &quot;x - 2y = 1&quot;, jawabX: 5, jawabY: 2},
+            {pers1: &quot;3x - y = 4&quot;, pers2: &quot;x + y = 4&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;2x + 2y = 8&quot;, pers2: &quot;x - y = 0&quot;, jawabX: 2, jawabY: 2},
+            {pers1: &quot;x + 2y = 5&quot;, pers2: &quot;3x - y = 5&quot;, jawabX: 1.67, jawabY: 1.67},
+            {pers1: &quot;2x - y = 3&quot;, pers2: &quot;x + 2y = 9&quot;, jawabX: 3, jawabY: 3},
+            {pers1: &quot;x + y = 6&quot;, pers2: &quot;2x + y = 9&quot;, jawabX: 3, jawabY: 3},
+            {pers1: &quot;3x + y = 9&quot;, pers2: &quot;x - y = 1&quot;, jawabX: 2.5, jawabY: 1.5},
+            {pers1: &quot;2x + 3y = 9&quot;, pers2: &quot;x + y = 3&quot;, jawabX: 0, jawabY: 3},
+        ];
+
+        let jawabanSiswa = new Array(50).fill(null);
+
+        function generateSoal() {
+            const container = document.getElementById('soalContainer');
+            container.innerHTML = '';
+
+            daftarSoal.forEach((soal, index) => {
+                const div = document.createElement('div');
+                div.className = 'interactive-tool';
+                div.innerHTML = `
+                    <h4>📝 Soal ${index + 1}</h4>
+                    <p style=&quot;margin-bottom: 20px; color: #666;&quot;>
+                        <strong>Tentukan penyelesaian SPLDV berikut:</strong><br>
+                        ${soal.pers1}<br>
+                        ${soal.pers2}
+                    </p>
+                    
+                    <div class=&quot;input-group&quot;>
+                        <label>Nilai x yang Anda peroleh:</label>
+                        <input type=&quot;number&quot; id=&quot;jawabX${index}&quot; placeholder=&quot;Masukkan nilai x&quot; step=&quot;0.01&quot; onchange=&quot;updateProgress()&quot;>
+                    </div>
+                    
+                    <div class=&quot;input-group&quot;>
+                        <label>Nilai y yang Anda peroleh:</label>
+                        <input type=&quot;number&quot; id=&quot;jawabY${index}&quot; placeholder=&quot;Masukkan nilai y&quot; step=&quot;0.01&quot; onchange=&quot;updateProgress()&quot;>
+                    </div>
+                    
+                    <button class=&quot;btn-action&quot; style=&quot;width: 100%; margin-top: 10px;&quot; onclick=&quot;cekJawabanSoal(${index})&quot;>Cek Jawaban</button>
+                    
+                    <div id=&quot;hasil${index}&quot; class=&quot;result-display&quot;>
+                        <div id=&quot;pesan${index}&quot;></div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function updateProgress() {
+            let terjawab = 0;
+            daftarSoal.forEach((_, index) => {
+                const x = document.getElementById(`jawabX${index}`).value;
+                const y = document.getElementById(`jawabY${index}`).value;
+                if (x !== '' && y !== '') {
+                    terjawab++;
+                    jawabanSiswa[index] = {x: parseFloat(x), y: parseFloat(y)};
+                }
+            });
+            
+            const persen = (terjawab / 50) * 100;
+            document.getElementById('progressBar').style.width = persen + '%';
+            document.getElementById('progressBar').innerHTML = persen.toFixed(0) + '%';
+            document.getElementById('progressText').innerHTML = `<strong>${terjawab}/50 Soal Dijawab</strong>`;
+        }
+
+        function cekJawabanSoal(index) {
+            const soal = daftarSoal[index];
+            const x = parseFloat(document.getElementById(`jawabX${index}`).value);
+            const y = parseFloat(document.getElementById(`jawabY${index}`).value);
+            const hasil = document.getElementById(`hasil${index}`);
+            const pesan = document.getElementById(`pesan${index}`);
+
+            if (isNaN(x) || isNaN(y)) {
+                pesan.innerHTML = '❌ <strong>Harap isi kedua field (x dan y)!</strong>';
+                hasil.style.borderLeftColor = '#ffc107';
+                hasil.style.background = '#fffbea';
+                hasil.classList.add('show');
+                return;
+            }
+
+            const tolAkurasi = 0.15;
+            if (Math.abs(x - soal.jawabX) <= tolAkurasi && Math.abs(y - soal.jawabY) <= tolAkurasi) {
+                pesan.innerHTML = `
+                    <div style=&quot;text-align: center;&quot;>
+                        <h3 style=&quot;color: #27ae60; margin: 0 0 15px 0;&quot;>✅ JAWABAN BENAR!</h3>
+                        <div style=&quot;background: #d4edda; padding: 15px; border-radius: 8px; margin-bottom: 10px;&quot;>
+                            <strong>Penyelesaian Anda:</strong><br>
+                            x = ${x.toFixed(2)}, y = ${y.toFixed(2)}<br><br>
+                            <strong>Pengecekan:</strong><br>
+                            Persamaan 1: ${soal.pers1} ✓<br>
+                            Persamaan 2: ${soal.pers2} ✓
+                        </div>
+                    </div>
+                `;
+                hasil.style.borderLeftColor = '#27ae60';
+                hasil.style.background = '#d4edda';
+                hasil.classList.add('show');
+            } else {
+                pesan.innerHTML = `
+                    <div>
+                        <h3 style=&quot;color: #dc3545; margin: 0 0 15px 0;&quot;>❌ JAWABAN BELUM TEPAT</h3>
+                        <div style=&quot;background: #f8d7da; padding: 15px; border-radius: 8px; margin-bottom: 10px;&quot;>
+                            <strong>Jawaban Anda:</strong><br>
+                            x = ${x.toFixed(2)}, y = ${y.toFixed(2)}<br><br>
+                            <strong>Jawaban yang Benar:</strong><br>
+                            x = ${soal.jawabX.toFixed(2)}, y = ${soal.jawabY.toFixed(2)}<br><br>
+                            <strong>Selisih:</strong><br>
+                            Δx = ${Math.abs(x - soal.jawabX).toFixed(3)}, Δy = ${Math.abs(y - soal.jawabY).toFixed(3)}
+                        </div>
+                        <p style=&quot;color: #666; margin: 10px 0;&quot;>💡 Coba lagi dengan lebih teliti!</p>
+                    </div>
+                `;
+                hasil.style.borderLeftColor = '#dc3545';
+                hasil.style.background = '#f8d7da';
+                hasil.classList.add('show');
+            }
+        }
+
+        function submitAllAnswers() {
+            let benar = 0;
+            let salah = 0;
+
+            daftarSoal.forEach((soal, index) => {
+                const x = parseFloat(document.getElementById(`jawabX${index}`).value);
+                const y = parseFloat(document.getElementById(`jawabY${index}`).value);
+                const hasil = document.getElementById(`hasil${index}`);
+                const pesan = document.getElementById(`pesan${index}`);
+
+                if (isNaN(x) || isNaN(y)) {
+                    pesan.innerHTML = '❌ Belum dijawab';
+                    hasil.style.borderLeftColor = '#ffc107';
+                    hasil.style.background = '#fffbea';
+                    hasil.classList.add('show');
+                } else {
+                    const tolAkurasi = 0.15;
+                    if (Math.abs(x - soal.jawabX) <= tolAkurasi && Math.abs(y - soal.jawabY) <= tolAkurasi) {
+                        pesan.innerHTML = `✅ BENAR! (x=${soal.jawabX.toFixed(2)}, y=${soal.jawabY.toFixed(2)})`;
+                        hasil.style.borderLeftColor = '#27ae60';
+                        hasil.style.background = '#d4edda';
+                        benar++;
+                    } else {
+                        pesan.innerHTML = `❌ BELUM TEPAT (Jawaban: x=${soal.jawabX.toFixed(2)}, y=${soal.jawabY.toFixed(2)})`;
+                        hasil.style.borderLeftColor = '#dc3545';
+                        hasil.style.background = '#f8d7da';
+                        salah++;
+                    }
+                    hasil.classList.add('show');
+                }
+            });
+
+            const persen = (benar / 50) * 100;
+            const pesanAkhir = document.getElementById('pesanAkhir');
+            const hasilAkhir = document.getElementById('hasilAkhir');
+
+            let keterangan = '';
+            let emoji = '';
+            let warna = '';
+            
+            if (persen === 100) {
+                keterangan = 'SEMPURNA! Anda telah menguasai SPLDV dengan luar biasa!';
+                emoji = '🏆';
+                warna = '#d4af37';
+            } else if (persen >= 80) {
+                keterangan = 'SANGAT BAIK! Terus tingkatkan pemahaman Anda!';
+                emoji = '🎉';
+                warna = '#27ae60';
+            } else if (persen >= 60) {
+                keterangan = 'BAIK! Masih ada yang perlu diperbaiki.';
+                emoji = '👍';
+                warna = '#3498db';
+            } else if (persen >= 40) {
+                keterangan = 'CUKUP! Pelajari kembali materi yang belum dipahami.';
+                emoji = '📖';
+                warna = '#f39c12';
+            } else {
+                keterangan = 'TERUS BELAJAR! Jangan menyerah, ulangi dari awal!';
+                emoji = '💪';
+                warna = '#e74c3c';
+            }
+
+            pesanAkhir.innerHTML = `
+                <div style=&quot;padding: 40px; border-radius: 15px; background: white; margin-bottom: 20px;&quot;>
+                    <h2 style=&quot;font-size: 3em; margin: 0; color: ${warna};&quot;>${emoji} ${keterangan}</h2>
+                </div>
+                
+                <div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;&quot;>
+                    <div style=&quot;background: white; padding: 25px; border-radius: 10px; border-top: 5px solid #27ae60;&quot;>
+                        <div style=&quot;font-size: 2.5em; font-weight: bold; color: #27ae60; margin-bottom: 10px;&quot;>${benar}</div>
+                        <div style=&quot;color: #666; font-size: 1.1em;&quot;>Jawaban Benar</div>
+                    </div>
+                    
+                    <div style=&quot;background: white; padding: 25px; border-radius: 10px; border-top: 5px solid #dc3545;&quot;>
+                        <div style=&quot;font-size: 2.5em; font-weight: bold; color: #dc3545; margin-bottom: 10px;&quot;>${50 - benar}</div>
+                        <div style=&quot;color: #666; font-size: 1.1em;&quot;>Belum Tepat/Belum Dijawab</div>
+                    </div>
+                    
+                    <div style=&quot;background: white; padding: 25px; border-radius: 10px; border-top: 5px solid ${warna};&quot;>
+                        <div style=&quot;font-size: 2.5em; font-weight: bold; color: ${warna}; margin-bottom: 10px;&quot;>${persen.toFixed(1)}%</div>
+                        <div style=&quot;color: #666; font-size: 1.1em;&quot;>Nilai Akhir</div>
+                    </div>
+                </div>
+
+                <div style=&quot;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 10px; margin-top: 30px;&quot;>
+                    <h3 style=&quot;margin-top: 0; font-size: 1.3em;&quot;>📋 Kategori Penilaian</h3>
+                    <div style=&quot;display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.95em; line-height: 1.8;&quot;>
+                        <div>• 🏆 Sempurna: 100%</div>
+                        <div>• 🎉 Sangat Baik: 80-99%</div>
+                        <div>• 👍 Baik: 60-79%</div>
+                        <div>• 📖 Cukup: 40-59%</div>
+                        <div>• 💪 Terus Belajar: <40%</div>
+                    </div>
+                </div>
+
+                <div style=&quot;background: #c8e6c9; color: #1b5e20; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 5px solid #27ae60;&quot;>
+                    <strong>💡 Saran:</strong> Ulangi materi di tab sebelumnya dan coba lagi untuk meningkatkan skor Anda!
+                </div>
+            `;
+            
+            hasilAkhir.style.display = 'block';
+            hasilAkhir.classList.add('show');
+            window.scrollTo(0, 0);
+        }
+
+        function drawGraphic(canvasId, a1, b1, c1, a2, b2, c2, intX, intY) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const scale = 35;
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 1;
+            for (let i = -5; i <= 5; i++) {
+                ctx.beginPath();
+                ctx.moveTo(centerX + i * scale, 0);
+                ctx.lineTo(centerX + i * scale, height);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, centerY - i * scale);
+                ctx.lineTo(width, centerY - i * scale);
+                ctx.stroke();
+            }
+            
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX, 0);
+            ctx.lineTo(centerX, height);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0, centerY);
+            ctx.lineTo(width, centerY);
+            ctx.stroke();
+            
+            ctx.fillStyle = 'black';
+            ctx.font = 'bold 12px Arial';
+            ctx.textAlign = 'right';
+            for (let i = -5; i <= 5; i++) {
+                if (i !== 0) {
+                    ctx.fillText(i, centerX + i * scale - 5, centerY + 15);
+                    ctx.fillText(i, centerX - 15, centerY - i * scale + 5);
+                }
+            }
+            ctx.fillText('x', width - 10, centerY + 15);
+            ctx.fillText('y', centerX - 10, 15);
+            
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let firstPoint = true;
+            for (let x = -6; x <= 6; x += 0.1) {
+                const y = (c1 - a1 * x) / b1;
+                const px = centerX + x * scale;
+                const py = centerY - y * scale;
+                if (firstPoint) {
+                    ctx.moveTo(px, py);
+                    firstPoint = false;
+                } else {
+                    ctx.lineTo(px, py);
+                }
+            }
+            ctx.stroke();
+            
+            ctx.strokeStyle = '#e74c3c';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            firstPoint = true;
+            for (let x = -6; x <= 6; x += 0.1) {
+                const y = (c2 - a2 * x) / b2;
+                const px = centerX + x * scale;
+                const py = centerY - y * scale;
+                if (firstPoint) {
+                    ctx.moveTo(px, py);
+                    firstPoint = false;
+                } else {
+                    ctx.lineTo(px, py);
+                }
+            }
+            ctx.stroke();
+            
+            const intPx = centerX + intX * scale;
+            const intPy = centerY - intY * scale;
+            
+            ctx.fillStyle = '#27ae60';
+            ctx.beginPath();
+            ctx.arc(intPx, intPy, 6, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#27ae60';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText(`(${intX}, ${intY})`, intPx + 10, intPy - 10);
+        }
+
+        function switchTab(tabName, event) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(el => el.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            setTimeout(() => {
+                drawGraphic('grafikContoh', 1, 1, 5, 2, -1, 1, 2, 3);
+                drawGraphic('grafikContoh2', 2, 1, 7, 1, -1, 2, 3, 1);
+                drawGraphic('grafikContoh3', 1, 2, 8, 2, -1, 1, 2, 3);
+            }, 100);
+            
+            window.scrollTo(0, 0);
+        }
+
+        window.addEventListener('load', () => {
+            generateSoal();
+            setTimeout(() => {
+                drawGraphic('grafikContoh', 1, 1, 5, 2, -1, 1, 2, 3);
+                drawGraphic('grafikContoh2', 2, 1, 7, 1, -1, 2, 3, 1);
+                drawGraphic('grafikContoh3', 1, 2, 8, 2, -1, 1, 2, 3);
+            }, 500);
+        });
+    </script>
+</body>
+</html>"></iframe>
+    <iframe id="substitusi" srcdoc="<!DOCTYPE html>
+<html lang=&quot;id&quot;>
+<head>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    <title>Kalkulator SPLDV Metode Substitusi</title>
+    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js&quot;></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 80px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 80px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-calculate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-reset {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #c0392b;
+        }
+
+        .solution-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .solution-section.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step.active {
+            border-left-color: #27ae60;
+            background: #f0f9ff;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .step-content {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .math-expression {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            font-weight: 500;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .result-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .result-value {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .result-value label {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .result-value .value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .graph-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .graph-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c00;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+
+            .result-values {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class=&quot;container&quot;>
+        <div class=&quot;header&quot;>
+            <h1>🧮 Kalkulator SPLDV</h1>
+            <p>Sistem Persamaan Linear Dua Variabel - Metode Substitusi</p>
+        </div>
+
+        <div class=&quot;content&quot;>
+            <div class=&quot;error&quot; id=&quot;error&quot;></div>
+
+            <div class=&quot;input-section&quot;>
+                <h2 style=&quot;color: #667eea; margin-bottom: 20px;&quot;>Masukkan Persamaan</h2>
+                
+                <div class=&quot;input-row&quot;>
+                    <div class=&quot;equation-row&quot;>
+                        <span>Persamaan 1:</span>
+                    </div>
+                    <div class=&quot;input-group&quot;>
+                        <label>a</label>
+                        <input type=&quot;number&quot; id=&quot;a1&quot; value=&quot;3&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>x +</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>b</label>
+                        <input type=&quot;number&quot; id=&quot;b1&quot; value=&quot;5&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>y =</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>c</label>
+                        <input type=&quot;number&quot; id=&quot;c1&quot; value=&quot;16&quot;>
+                    </div>
+                </div>
+
+                <div class=&quot;input-row&quot;>
+                    <div class=&quot;equation-row&quot;>
+                        <span>Persamaan 2:</span>
+                    </div>
+                    <div class=&quot;input-group&quot;>
+                        <label>d</label>
+                        <input type=&quot;number&quot; id=&quot;a2&quot; value=&quot;4&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>x +</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>e</label>
+                        <input type=&quot;number&quot; id=&quot;b2&quot; value=&quot;1&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>y =</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>f</label>
+                        <input type=&quot;number&quot; id=&quot;c2&quot; value=&quot;10&quot;>
+                    </div>
+                </div>
+
+                <div class=&quot;button-group&quot;>
+                    <button class=&quot;btn-calculate&quot; onclick=&quot;hitungSPLDV()&quot;>Hitung Penyelesaian</button>
+                    <button class=&quot;btn-reset&quot; onclick=&quot;reset()&quot;>Reset</button>
+                </div>
+            </div>
+
+            <div id=&quot;solutionContainer&quot; class=&quot;solution-section&quot;>
+                <!-- DIKETAHUI -->
+                <div class=&quot;step active&quot;>
+                    <div class=&quot;step-title&quot;>📌 Diketahui:</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot; id=&quot;diketahui&quot;></div>
+                    </div>
+                </div>
+
+                <!-- DITANYAKAN -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>❓ Ditanyakan:</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot;>Tentukan nilai x dan y dari sistem persamaan di atas</div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 1 -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 1: Ubah Salah Satu Persamaan (Pilih yang Termudah)</div>
+                    <div class=&quot;step-content&quot;>
+                        <p>Kita akan mengubah Persamaan 2 untuk mendapatkan y dalam bentuk x:</p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah1&quot;></div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 2 -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 2: Substitusi ke Persamaan 1 untuk Mencari x</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2b&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2c&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2d&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2e&quot;></div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 3 -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 3: Cari Nilai y Menggunakan Salah Satu Persamaan</div>
+                    <div class=&quot;step-content&quot;>
+                        <p><strong>Dari Persamaan 2:</strong></p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3b&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3c&quot;></div>
+                    </div>
+                </div>
+
+                <!-- HASIL -->
+                <div class=&quot;result-box&quot;>
+                    <h3>✨ Penyelesaian Akhir</h3>
+                    <div class=&quot;result-values&quot;>
+                        <div class=&quot;result-value&quot;>
+                            <label>Nilai x</label>
+                            <div class=&quot;value&quot; id=&quot;hasilX&quot;></div>
+                        </div>
+                        <div class=&quot;result-value&quot;>
+                            <label>Nilai y</label>
+                            <div class=&quot;value&quot; id=&quot;hasilY&quot;></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRAFIK -->
+                <div class=&quot;graph-section&quot;>
+                    <h2>📊 Visualisasi Grafik</h2>
+                    <canvas id=&quot;canvas&quot; width=&quot;400&quot; height=&quot;400&quot;></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chart = null;
+
+        function hitungSPLDV() {
+            try {
+                const a1 = parseFloat(document.getElementById('a1').value);
+                const b1 = parseFloat(document.getElementById('b1').value);
+                const c1 = parseFloat(document.getElementById('c1').value);
+                const a2 = parseFloat(document.getElementById('a2').value);
+                const b2 = parseFloat(document.getElementById('b2').value);
+                const c2 = parseFloat(document.getElementById('c2').value);
+
+                if (isNaN(a1) || isNaN(b1) || isNaN(c1) || isNaN(a2) || isNaN(b2) || isNaN(c2)) {
+                    showError('Semua nilai harus diisi dengan angka');
+                    return;
+                }
+
+                if (b2 === 0) {
+                    showError('Koefisien y pada persamaan 2 tidak boleh 0 untuk metode substitusi ini');
+                    return;
+                }
+
+                // DIKETAHUI
+                const diketahui = `Persamaan 1: ${a1}x + ${b1}y = ${c1}\nPersamaan 2: ${a2}x + ${b2}y = ${c2}`;
+                document.getElementById('diketahui').innerHTML = diketahui.replace(/\n/g, '<br>');
+
+                // LANGKAH 1: Ubah persamaan 2
+                const coefYbaru = -a2 / b2;
+                const konstYbaru = c2 / b2;
+                const langkah1 = `${a2}x + ${b2}y = ${c2}<br>y = ${coefYbaru.toFixed(4)}x + ${konstYbaru.toFixed(4)}`;
+                document.getElementById('langkah1').innerHTML = langkah1;
+
+                // LANGKAH 2: Substitusi ke persamaan 1
+                const koefX = a1 + b1 * coefYbaru;
+                const konstX = c1 - b1 * konstYbaru;
+                const x = konstX / koefX;
+
+                const langkah2a = `${a1}x + ${b1}(${coefYbaru.toFixed(4)}x + ${konstYbaru.toFixed(4)}) = ${c1}`;
+                const langkah2b = `${a1}x + ${(b1 * coefYbaru).toFixed(4)}x + ${(b1 * konstYbaru).toFixed(4)} = ${c1}`;
+                const langkah2c = `${koefX.toFixed(4)}x = ${c1} - ${(b1 * konstYbaru).toFixed(4)}`;
+                const langkah2d = `${koefX.toFixed(4)}x = ${konstX.toFixed(4)}`;
+                const langkah2e = `x = ${x.toFixed(4)}`;
+
+                document.getElementById('langkah2a').innerHTML = langkah2a;
+                document.getElementById('langkah2b').innerHTML = langkah2b;
+                document.getElementById('langkah2c').innerHTML = langkah2c;
+                document.getElementById('langkah2d').innerHTML = langkah2d;
+                document.getElementById('langkah2e').innerHTML = langkah2e;
+
+                // LANGKAH 3: Cari nilai y
+                const y = a2 * x + b2 * (c2 / b2) - c2 / b2 * b2;
+                const yHitung = (c2 - a2 * x) / b2;
+
+                const langkah3a = `${a2}x + ${b2}y = ${c2}`;
+                const langkah3b = `${a2}(${x.toFixed(4)}) + ${b2}y = ${c2}`;
+                const langkah3c = `${(a2 * x).toFixed(4)} + ${b2}y = ${c2}<br>${b2}y = ${(c2 - a2 * x).toFixed(4)}<br>y = ${yHitung.toFixed(4)}`;
+
+                document.getElementById('langkah3a').innerHTML = langkah3a;
+                document.getElementById('langkah3b').innerHTML = langkah3b;
+                document.getElementById('langkah3c').innerHTML = langkah3c;
+
+                // Hasil
+                document.getElementById('hasilX').innerHTML = x.toFixed(2);
+                document.getElementById('hasilY').innerHTML = yHitung.toFixed(2);
+
+                // Tampilkan solusi
+                document.getElementById('solutionContainer').classList.add('show');
+                document.getElementById('error').classList.remove('show');
+
+                // Gambar grafik
+                gambargrafik(a1, b1, c1, a2, b2, c2, x, yHitung);
+
+            } catch (e) {
+                showError('Terjadi kesalahan: ' + e.message);
+            }
+        }
+
+        function gambargrafik(a1, b1, c1, a2, b2, c2, x, y) {
+            const ctx = document.getElementById('canvas').getContext('2d');
+
+            // Generate titik untuk garis 1
+            const xRange = [-2, 8];
+            const line1Points = [];
+            const line2Points = [];
+
+            for (let xi = xRange[0]; xi <= xRange[1]; xi += 0.1) {
+                const y1 = (c1 - a1 * xi) / b1;
+                line1Points.push({x: xi, y: y1});
+
+                const y2 = (c2 - a2 * xi) / b2;
+                line2Points.push({x: xi, y: y2});
+            }
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: `Persamaan 1: ${a1}x + ${b1}y = ${c1}`,
+                            data: line1Points,
+                            borderColor: '#3498db',
+                            backgroundColor: '#3498db',
+                            showLine: true,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            borderWidth: 3
+                        },
+                        {
+                            label: `Persamaan 2: ${a2}x + ${b2}y = ${c2}`,
+                            data: line2Points,
+                            borderColor: '#e74c3c',
+                            backgroundColor: '#e74c3c',
+                            showLine: true,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            borderWidth: 3
+                        },
+                        {
+                            label: `Titik Potong (${x.toFixed(2)}, ${y.toFixed(2)})`,
+                            data: [{x: x, y: y}],
+                            borderColor: '#27ae60',
+                            backgroundColor: '#27ae60',
+                            pointRadius: 8,
+                            pointHoverRadius: 10
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            min: -2,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: 'x'
+                            }
+                        },
+                        y: {
+                            min: -2,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: 'y'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function showError(msg) {
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = msg;
+            errorEl.classList.add('show');
+            document.getElementById('solutionContainer').classList.remove('show');
+        }
+
+        function reset() {
+            document.getElementById('a1').value = '3';
+            document.getElementById('b1').value = '5';
+            document.getElementById('c1').value = '16';
+            document.getElementById('a2').value = '4';
+            document.getElementById('b2').value = '1';
+            document.getElementById('c2').value = '10';
+            document.getElementById('solutionContainer').classList.remove('show');
+            document.getElementById('error').classList.remove('show');
+            if (chart) {
+                chart.destroy();
+            }
+        }
+
+        // Jalankan perhitungan otomatis saat halaman dimuat
+        window.addEventListener('load', () => {
+            hitungSPLDV();
+        });
+    </script>
+</body>
+</html>
+
+"></iframe>
+    <iframe id="eliminasi" srcdoc="<!DOCTYPE html>
+<html lang=&quot;id&quot;>
+<head>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    <title>Kalkulator SPLDV Metode Eliminasi</title>
+    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js&quot;></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 80px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 80px;
+            text-align: center;
+            transition: border-color 0.3s;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .btn-calculate {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+            color: white;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-reset {
+            background: #3498db !important;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #2980b9 !important;
+        }
+
+        .solution-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .solution-section.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .step.active {
+            border-left-color: #27ae60;
+            background: #f0f9ff;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .step-content {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .math-expression {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            font-weight: 500;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .result-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .result-value {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .result-value label {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .result-value .value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .graph-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .graph-section h2 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c00;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .input-row {
+                flex-wrap: wrap;
+            }
+
+            .result-values {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class=&quot;container&quot;>
+        <div class=&quot;header&quot;>
+            <h1>🧮 Kalkulator SPLDV</h1>
+            <p>Sistem Persamaan Linear Dua Variabel - Metode Eliminasi</p>
+        </div>
+
+        <div class=&quot;content&quot;>
+            <div class=&quot;error&quot; id=&quot;error&quot;></div>
+
+            <div class=&quot;input-section&quot;>
+                <h2 style=&quot;color: #e74c3c; margin-bottom: 20px;&quot;>Masukkan Persamaan</h2>
+                
+                <div class=&quot;input-row&quot;>
+                    <div class=&quot;equation-row&quot;>
+                        <span>Persamaan 1:</span>
+                    </div>
+                    <div class=&quot;input-group&quot;>
+                        <label>a</label>
+                        <input type=&quot;number&quot; id=&quot;a1&quot; value=&quot;3&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>x +</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>b</label>
+                        <input type=&quot;number&quot; id=&quot;b1&quot; value=&quot;5&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>y =</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>c</label>
+                        <input type=&quot;number&quot; id=&quot;c1&quot; value=&quot;16&quot;>
+                    </div>
+                </div>
+
+                <div class=&quot;input-row&quot;>
+                    <div class=&quot;equation-row&quot;>
+                        <span>Persamaan 2:</span>
+                    </div>
+                    <div class=&quot;input-group&quot;>
+                        <label>d</label>
+                        <input type=&quot;number&quot; id=&quot;a2&quot; value=&quot;4&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>x +</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>e</label>
+                        <input type=&quot;number&quot; id=&quot;b2&quot; value=&quot;1&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>y =</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>f</label>
+                        <input type=&quot;number&quot; id=&quot;c2&quot; value=&quot;10&quot;>
+                    </div>
+                </div>
+
+                <div class=&quot;button-group&quot;>
+                    <button class=&quot;btn-calculate&quot; onclick=&quot;hitungSPLDV()&quot;>Hitung Penyelesaian</button>
+                    <button class=&quot;btn-reset&quot; onclick=&quot;reset()&quot;>Reset</button>
+                </div>
+            </div>
+
+            <div id=&quot;solutionContainer&quot; class=&quot;solution-section&quot;>
+                <!-- DIKETAHUI -->
+                <div class=&quot;step active&quot;>
+                    <div class=&quot;step-title&quot;>📌 Diketahui:</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot; id=&quot;diketahui&quot;></div>
+                    </div>
+                </div>
+
+                <!-- DITANYAKAN -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>❓ Ditanyakan:</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot;>Tentukan nilai x dan y dari sistem persamaan di atas</div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 1 -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 1: Samakan Salah Satu Koefisien</div>
+                    <div class=&quot;step-content&quot;>
+                        <p>Kalikan persamaan sehingga salah satu variabel memiliki koefisien yang sama:</p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah1a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah1b&quot;></div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 2 -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 2: Kurangkan Kedua Persamaan untuk Eliminasi</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2b&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2c&quot;></div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 3 -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 3: Cari Variabel Kedua</div>
+                    <div class=&quot;step-content&quot;>
+                        <p>Substitusikan nilai yang sudah ditemukan ke salah satu persamaan awal:</p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3b&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3c&quot;></div>
+                    </div>
+                </div>
+
+                <!-- HASIL -->
+                <div class=&quot;result-box&quot;>
+                    <h3>✨ Penyelesaian Akhir</h3>
+                    <div class=&quot;result-values&quot;>
+                        <div class=&quot;result-value&quot;>
+                            <label>Nilai x</label>
+                            <div class=&quot;value&quot; id=&quot;hasilX&quot;></div>
+                        </div>
+                        <div class=&quot;result-value&quot;>
+                            <label>Nilai y</label>
+                            <div class=&quot;value&quot; id=&quot;hasilY&quot;></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRAFIK -->
+                <div class=&quot;graph-section&quot;>
+                    <h2>📊 Visualisasi Grafik</h2>
+                    <canvas id=&quot;canvas&quot; width=&quot;400&quot; height=&quot;400&quot;></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        'use strict';
+        let chart = null;
+
+        function gcd(a, b) {
+            a = Math.abs(a);
+            b = Math.abs(b);
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        function hitungSPLDV() {
+            try {
+                console.log('Fungsi hitungSPLDV dipanggil');
+                const a1 = parseFloat(document.getElementById('a1').value);
+                const b1 = parseFloat(document.getElementById('b1').value);
+                const c1 = parseFloat(document.getElementById('c1').value);
+                const a2 = parseFloat(document.getElementById('a2').value);
+                const b2 = parseFloat(document.getElementById('b2').value);
+                const c2 = parseFloat(document.getElementById('c2').value);
+                
+                console.log('Nilai input:', {a1, b1, c1, a2, b2, c2});
+
+                if (isNaN(a1) || isNaN(b1) || isNaN(c1) || isNaN(a2) || isNaN(b2) || isNaN(c2)) {
+                    showError('Semua nilai harus diisi dengan angka');
+                    return;
+                }
+
+                // DIKETAHUI
+                const diketahui = `Persamaan 1: ${a1}x + ${b1}y = ${c1}\nPersamaan 2: ${a2}x + ${b2}y = ${c2}`;
+                document.getElementById('diketahui').innerHTML = diketahui.replace(/\n/g, '<br>');
+
+                // LANGKAH 1: Samakan koefisien variabel x
+                const k1 = a2;
+                const k2 = a1;
+                const p1_a = a1 * k1;
+                const p1_b = b1 * k1;
+                const p1_c = c1 * k1;
+                const p2_a = a2 * k2;
+                const p2_b = b2 * k2;
+                const p2_c = c2 * k2;
+
+                const langkah1a = `Persamaan 1 × ${k1}: ${p1_a}x + ${p1_b}y = ${p1_c}`;
+                const langkah1b = `Persamaan 2 × ${k2}: ${p2_a}x + ${p2_b}y = ${p2_c}`;
+                document.getElementById('langkah1a').innerHTML = langkah1a;
+                document.getElementById('langkah1b').innerHTML = langkah1b;
+
+                // LANGKAH 2: Eliminasi x
+                const koefY_hasil = p1_b - p2_b;
+                const const_hasil = p1_c - p2_c;
+                const y = const_hasil / koefY_hasil;
+
+                const langkah2a = `(${p1_a}x + ${p1_b}y) - (${p2_a}x + ${p2_b}y) = ${p1_c} - ${p2_c}`;
+                const langkah2b = `${koefY_hasil}y = ${const_hasil}`;
+                const langkah2c = `y = ${y.toFixed(4)}`;
+                document.getElementById('langkah2a').innerHTML = langkah2a;
+                document.getElementById('langkah2b').innerHTML = langkah2b;
+                document.getElementById('langkah2c').innerHTML = langkah2c;
+
+                // LANGKAH 3: Cari x
+                const x = (c1 - b1 * y) / a1;
+
+                const langkah3a = `${a1}x + ${b1}y = ${c1}`;
+                const langkah3b = `${a1}x + ${b1}(${y.toFixed(4)}) = ${c1}`;
+                const langkah3c = `${a1}x = ${(c1 - b1 * y).toFixed(4)}<br>x = ${x.toFixed(4)}`;
+                document.getElementById('langkah3a').innerHTML = langkah3a;
+                document.getElementById('langkah3b').innerHTML = langkah3b;
+                document.getElementById('langkah3c').innerHTML = langkah3c;
+
+                // Hasil
+                document.getElementById('hasilX').innerHTML = x.toFixed(2);
+                document.getElementById('hasilY').innerHTML = y.toFixed(2);
+
+                // Tampilkan solusi
+                document.getElementById('solutionContainer').classList.add('show');
+                document.getElementById('error').classList.remove('show');
+
+                // Gambar grafik
+                gambargrafik(a1, b1, c1, a2, b2, c2, x, y);
+
+            } catch (e) {
+                console.error('Error:', e);
+                showError('Terjadi kesalahan: ' + e.message);
+            }
+        }
+
+        function gambargrafik(a1, b1, c1, a2, b2, c2, x, y) {
+            const ctx = document.getElementById('canvas').getContext('2d');
+
+            // Generate titik untuk garis 1
+            const xRange = [-2, 8];
+            const line1Points = [];
+            const line2Points = [];
+
+            for (let xi = xRange[0]; xi <= xRange[1]; xi += 0.1) {
+                const y1 = (c1 - a1 * xi) / b1;
+                line1Points.push({x: xi, y: y1});
+
+                const y2 = (c2 - a2 * xi) / b2;
+                line2Points.push({x: xi, y: y2});
+            }
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: `Persamaan 1: ${a1}x + ${b1}y = ${c1}`,
+                            data: line1Points,
+                            borderColor: '#3498db',
+                            backgroundColor: '#3498db',
+                            showLine: true,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            borderWidth: 3
+                        },
+                        {
+                            label: `Persamaan 2: ${a2}x + ${b2}y = ${c2}`,
+                            data: line2Points,
+                            borderColor: '#e74c3c',
+                            backgroundColor: '#e74c3c',
+                            showLine: true,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            borderWidth: 3
+                        },
+                        {
+                            label: `Titik Potong (${x.toFixed(2)}, ${y.toFixed(2)})`,
+                            data: [{x: x, y: y}],
+                            borderColor: '#27ae60',
+                            backgroundColor: '#27ae60',
+                            pointRadius: 8,
+                            pointHoverRadius: 10
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            min: -2,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: 'x'
+                            }
+                        },
+                        y: {
+                            min: -2,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: 'y'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function showError(msg) {
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = msg;
+            errorEl.classList.add('show');
+            document.getElementById('solutionContainer').classList.remove('show');
+        }
+
+        function reset() {
+            document.getElementById('a1').value = '3';
+            document.getElementById('b1').value = '5';
+            document.getElementById('c1').value = '16';
+            document.getElementById('a2').value = '4';
+            document.getElementById('b2').value = '1';
+            document.getElementById('c2').value = '10';
+            document.getElementById('solutionContainer').classList.remove('show');
+            document.getElementById('error').classList.remove('show');
+            if (chart) {
+                chart.destroy();
+            }
+        }
+
+        // Jalankan perhitungan otomatis saat halaman dimuat
+        window.addEventListener('load', () => {
+            console.log('Halaman dimuat, menjalankan hitungSPLDV');
+            setTimeout(() => {
+                hitungSPLDV();
+            }, 500);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            setTimeout(() => {
+                hitungSPLDV();
+            }, 500);
+        });
+    </script>
+</body>
+</html>"></iframe>
+    <iframe id="gabungan" srcdoc="<!DOCTYPE html>
+<html lang=&quot;id&quot;>
+<head>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    <title>Kalkulator SPLDV Metode Gabungan</title>
+    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js&quot;></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #9b59b6;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 80px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 80px;
+            text-align: center;
+            transition: border-color 0.3s;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #9b59b6;
+            box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .btn-calculate {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%) !important;
+            color: white;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+        }
+
+        .btn-reset {
+            background: #f39c12 !important;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #e67e22 !important;
+        }
+
+        .solution-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .solution-section.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #9b59b6;
+        }
+
+        .step.active {
+            border-left-color: #27ae60;
+            background: #f0f9ff;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #9b59b6;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .step-content {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .math-expression {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            font-weight: 500;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .result-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .result-value {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .result-value label {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .result-value .value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .graph-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .graph-section h2 {
+            color: #9b59b6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c00;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .input-row {
+                flex-wrap: wrap;
+            }
+
+            .result-values {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class=&quot;container&quot;>
+        <div class=&quot;header&quot;>
+            <h1>🧮 Kalkulator SPLDV</h1>
+            <p>Sistem Persamaan Linear Dua Variabel - Metode Gabungan (Eliminasi + Substitusi)</p>
+        </div>
+
+        <div class=&quot;content&quot;>
+            <div class=&quot;error&quot; id=&quot;error&quot;></div>
+
+            <div class=&quot;input-section&quot;>
+                <h2 style=&quot;color: #9b59b6; margin-bottom: 20px;&quot;>Masukkan Persamaan</h2>
+                
+                <div class=&quot;input-row&quot;>
+                    <div class=&quot;equation-row&quot;>
+                        <span>Persamaan 1:</span>
+                    </div>
+                    <div class=&quot;input-group&quot;>
+                        <label>a</label>
+                        <input type=&quot;number&quot; id=&quot;a1&quot; value=&quot;3&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>x +</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>b</label>
+                        <input type=&quot;number&quot; id=&quot;b1&quot; value=&quot;5&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>y =</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>c</label>
+                        <input type=&quot;number&quot; id=&quot;c1&quot; value=&quot;16&quot;>
+                    </div>
+                </div>
+
+                <div class=&quot;input-row&quot;>
+                    <div class=&quot;equation-row&quot;>
+                        <span>Persamaan 2:</span>
+                    </div>
+                    <div class=&quot;input-group&quot;>
+                        <label>d</label>
+                        <input type=&quot;number&quot; id=&quot;a2&quot; value=&quot;4&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>x +</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>e</label>
+                        <input type=&quot;number&quot; id=&quot;b2&quot; value=&quot;1&quot;>
+                    </div>
+                    <div class=&quot;equation-row&quot;><span>y =</span></div>
+                    <div class=&quot;input-group&quot;>
+                        <label>f</label>
+                        <input type=&quot;number&quot; id=&quot;c2&quot; value=&quot;10&quot;>
+                    </div>
+                </div>
+
+                <div class=&quot;button-group&quot;>
+                    <button class=&quot;btn-calculate&quot; onclick=&quot;hitungSPLDV()&quot;>Hitung Penyelesaian</button>
+                    <button class=&quot;btn-reset&quot; onclick=&quot;reset()&quot;>Reset</button>
+                </div>
+            </div>
+
+            <div id=&quot;solutionContainer&quot; class=&quot;solution-section&quot;>
+                <!-- DIKETAHUI -->
+                <div class=&quot;step active&quot;>
+                    <div class=&quot;step-title&quot;>📌 Diketahui:</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot; id=&quot;diketahui&quot;></div>
+                    </div>
+                </div>
+
+                <!-- DITANYAKAN -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>❓ Ditanyakan:</div>
+                    <div class=&quot;step-content&quot;>
+                        <div class=&quot;math-expression&quot;>Tentukan nilai x dan y dari sistem persamaan di atas</div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 1: ELIMINASI -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 1: ELIMINASI - Samakan Koefisien Variabel x</div>
+                    <div class=&quot;step-content&quot;>
+                        <p>Kalikan persamaan sehingga koefisien x sama:</p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah1a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah1b&quot;></div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 2: KURANGKAN -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🔵 Langkah 2: ELIMINASI - Kurangkan Persamaan</div>
+                    <div class=&quot;step-content&quot;>
+                        <p>Kurangkan kedua persamaan untuk menghilangkan variabel x:</p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2b&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah2c&quot;></div>
+                    </div>
+                </div>
+
+                <!-- LANGKAH 3: SUBSTITUSI -->
+                <div class=&quot;step&quot;>
+                    <div class=&quot;step-title&quot;>🟢 Langkah 3: SUBSTITUSI - Cari Variabel x</div>
+                    <div class=&quot;step-content&quot;>
+                        <p>Substitusikan nilai y ke salah satu persamaan awal:</p>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3a&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3b&quot;></div>
+                        <div class=&quot;math-expression&quot; id=&quot;langkah3c&quot;></div>
+                    </div>
+                </div>
+
+                <!-- HASIL -->
+                <div class=&quot;result-box&quot;>
+                    <h3>✨ Penyelesaian Akhir</h3>
+                    <div class=&quot;result-values&quot;>
+                        <div class=&quot;result-value&quot;>
+                            <label>Nilai x</label>
+                            <div class=&quot;value&quot; id=&quot;hasilX&quot;></div>
+                        </div>
+                        <div class=&quot;result-value&quot;>
+                            <label>Nilai y</label>
+                            <div class=&quot;value&quot; id=&quot;hasilY&quot;></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRAFIK -->
+                <div class=&quot;graph-section&quot;>
+                    <h2>📊 Visualisasi Grafik</h2>
+                    <canvas id=&quot;canvas&quot; width=&quot;400&quot; height=&quot;400&quot;></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        'use strict';
+        let chart = null;
+
+        function hitungSPLDV() {
+            try {
+                console.log('Fungsi hitungSPLDV dipanggil');
+                const a1 = parseFloat(document.getElementById('a1').value);
+                const b1 = parseFloat(document.getElementById('b1').value);
+                const c1 = parseFloat(document.getElementById('c1').value);
+                const a2 = parseFloat(document.getElementById('a2').value);
+                const b2 = parseFloat(document.getElementById('b2').value);
+                const c2 = parseFloat(document.getElementById('c2').value);
+                
+                console.log('Nilai input:', {a1, b1, c1, a2, b2, c2});
+
+                if (isNaN(a1) || isNaN(b1) || isNaN(c1) || isNaN(a2) || isNaN(b2) || isNaN(c2)) {
+                    showError('Semua nilai harus diisi dengan angka');
+                    return;
+                }
+
+                // DIKETAHUI
+                const diketahui = `Persamaan 1: ${a1}x + ${b1}y = ${c1}\nPersamaan 2: ${a2}x + ${b2}y = ${c2}`;
+                document.getElementById('diketahui').innerHTML = diketahui.replace(/\n/g, '<br>');
+
+                // LANGKAH 1: ELIMINASI - Samakan koefisien x
+                const k1 = a2;
+                const k2 = a1;
+                const p1_a = a1 * k1;
+                const p1_b = b1 * k1;
+                const p1_c = c1 * k1;
+                const p2_a = a2 * k2;
+                const p2_b = b2 * k2;
+                const p2_c = c2 * k2;
+
+                const langkah1a = `Persamaan 1 × ${k1}: ${p1_a}x + ${p1_b}y = ${p1_c}`;
+                const langkah1b = `Persamaan 2 × ${k2}: ${p2_a}x + ${p2_b}y = ${p2_c}`;
+                document.getElementById('langkah1a').innerHTML = langkah1a;
+                document.getElementById('langkah1b').innerHTML = langkah1b;
+
+                // LANGKAH 2: ELIMINASI - Kurangkan
+                const koefY_hasil = p1_b - p2_b;
+                const const_hasil = p1_c - p2_c;
+                const y = const_hasil / koefY_hasil;
+
+                const langkah2a = `(${p1_a}x + ${p1_b}y) - (${p2_a}x + ${p2_b}y) = ${p1_c} - ${p2_c}`;
+                const langkah2b = `${koefY_hasil}y = ${const_hasil}`;
+                const langkah2c = `y = ${y.toFixed(4)}`;
+                document.getElementById('langkah2a').innerHTML = langkah2a;
+                document.getElementById('langkah2b').innerHTML = langkah2b;
+                document.getElementById('langkah2c').innerHTML = langkah2c;
+
+                // LANGKAH 3: SUBSTITUSI - Cari x
+                const x = (c1 - b1 * y) / a1;
+
+                const langkah3a = `${a1}x + ${b1}y = ${c1}`;
+                const langkah3b = `${a1}x + ${b1}(${y.toFixed(4)}) = ${c1}`;
+                const langkah3c = `${a1}x = ${(c1 - b1 * y).toFixed(4)}<br>x = ${x.toFixed(4)}`;
+                document.getElementById('langkah3a').innerHTML = langkah3a;
+                document.getElementById('langkah3b').innerHTML = langkah3b;
+                document.getElementById('langkah3c').innerHTML = langkah3c;
+
+                // Hasil
+                document.getElementById('hasilX').innerHTML = x.toFixed(2);
+                document.getElementById('hasilY').innerHTML = y.toFixed(2);
+
+                // Tampilkan solusi
+                document.getElementById('solutionContainer').classList.add('show');
+                document.getElementById('error').classList.remove('show');
+
+                // Gambar grafik
+                gambargrafik(a1, b1, c1, a2, b2, c2, x, y);
+
+            } catch (e) {
+                console.error('Error:', e);
+                showError('Terjadi kesalahan: ' + e.message);
+            }
+        }
+
+        function gambargrafik(a1, b1, c1, a2, b2, c2, x, y) {
+            const ctx = document.getElementById('canvas').getContext('2d');
+
+            // Generate titik untuk garis 1
+            const xRange = [-2, 8];
+            const line1Points = [];
+            const line2Points = [];
+
+            for (let xi = xRange[0]; xi <= xRange[1]; xi += 0.1) {
+                const y1 = (c1 - a1 * xi) / b1;
+                line1Points.push({x: xi, y: y1});
+
+                const y2 = (c2 - a2 * xi) / b2;
+                line2Points.push({x: xi, y: y2});
+            }
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: `Persamaan 1: ${a1}x + ${b1}y = ${c1}`,
+                            data: line1Points,
+                            borderColor: '#3498db',
+                            backgroundColor: '#3498db',
+                            showLine: true,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            borderWidth: 3
+                        },
+                        {
+                            label: `Persamaan 2: ${a2}x + ${b2}y = ${c2}`,
+                            data: line2Points,
+                            borderColor: '#e74c3c',
+                            backgroundColor: '#e74c3c',
+                            showLine: true,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            borderWidth: 3
+                        },
+                        {
+                            label: `Titik Potong (${x.toFixed(2)}, ${y.toFixed(2)})`,
+                            data: [{x: x, y: y}],
+                            borderColor: '#27ae60',
+                            backgroundColor: '#27ae60',
+                            pointRadius: 8,
+                            pointHoverRadius: 10
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            min: -2,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: 'x'
+                            }
+                        },
+                        y: {
+                            min: -2,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: 'y'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function showError(msg) {
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = msg;
+            errorEl.classList.add('show');
+            document.getElementById('solutionContainer').classList.remove('show');
+        }
+
+        function reset() {
+            document.getElementById('a1').value = '3';
+            document.getElementById('b1').value = '5';
+            document.getElementById('c1').value = '16';
+            document.getElementById('a2').value = '4';
+            document.getElementById('b2').value = '1';
+            document.getElementById('c2').value = '10';
+            document.getElementById('solutionContainer').classList.remove('show');
+            document.getElementById('error').classList.remove('show');
+            if (chart) {
+                chart.destroy();
+            }
+        }
+
+        // Jalankan perhitungan otomatis saat halaman dimuat
+        window.addEventListener('load', () => {
+            console.log('Halaman dimuat, menjalankan hitungSPLDV');
+            setTimeout(() => {
+                hitungSPLDV();
+            }, 500);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            setTimeout(() => {
+                hitungSPLDV();
+            }, 500);
+        });
+    </script>
+</body>
+</html>"></iframe>
+
+    <script>
+        function openPage(pageId) {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('backButton').style.display = 'block';
+            document.querySelectorAll('iframe').forEach(f => f.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+            window.scrollTo(0,0);
+        }
+        function goBack() {
+            document.querySelectorAll('iframe').forEach(f => f.style.display = 'none');
+            document.getElementById('mainMenu').style.display = 'block';
+            document.getElementById('backButton').style.display = 'none';
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
